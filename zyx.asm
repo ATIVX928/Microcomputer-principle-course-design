@@ -10,7 +10,7 @@ k8253a equ 0e000h
 ;数码管倒数序列
 smg dw 3fh,06h,5bh,4fh,66h,6dh,7dh,07h,7fh,6fh,3fh,06h,5bh,4fh,66h,6dh,7dh,07h,7fh,6fh
 ;led序列
-led1 dw 01101111b,01101111b,01101111b,01101111b,01101111b,01101111b,01101111b,10101111b,11101111b,10101111b,11010111b,11010111b,11010111b,11010111b,11010111b,11010111b,11010111b,11011011b,11011111b,11011011b
+led1 dw 6fh,6fh,6fh,6fh,6fh,6fh,6fh,0afh,0efh,0afh,0d7h,0d7h,0d7h,0d7h,0d7h,0d7h,0d7h,0dbh,0dfh,0dbh
 ;预留数据，只使用了aa作为夜晚的状态存储器
 aa dw 0
 bb dw 0
@@ -94,7 +94,7 @@ init8259	proc near
 		;ICW4，完全嵌套方式，缓冲方式/从片，自动EOI，8086方式
 		mov al,11
 		out dx,al
-		;OCW1，使能中断0
+		;OCW1，只使能中断0
 		mov al,0feh
 		out dx,al
 		ret
